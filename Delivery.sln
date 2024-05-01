@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackendServices", "BackendServices", "{4DD4B134-FE8A-4CB2-873C-C1B585196227}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontendApps", "FrontendApps", "{BD53F733-CEA3-4D74-9997-CB633620E946}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseServices", "DataBaseServices", "{21410E89-F193-4DA5-899F-92E448836500}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryDB", "DataBaseServices\DeliveryDB\DeliveryDB.csproj", "{18E32EE0-8A87-4620-8743-3624CC2363B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerService", "BackendServices\CustomerService\CustomerService.csproj", "{58D90118-75B1-4638-A90E-1AC51C22D4A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A1A4EC4B-7DAF-4066-9148-1840D069247D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{51FCAE0A-BFBF-4C50-9A14-AFB9024BF5AF}"
+	ProjectSection(SolutionItems) = preProject
+		migration.txt = migration.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18E32EE0-8A87-4620-8743-3624CC2363B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18E32EE0-8A87-4620-8743-3624CC2363B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18E32EE0-8A87-4620-8743-3624CC2363B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18E32EE0-8A87-4620-8743-3624CC2363B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D90118-75B1-4638-A90E-1AC51C22D4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D90118-75B1-4638-A90E-1AC51C22D4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D90118-75B1-4638-A90E-1AC51C22D4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D90118-75B1-4638-A90E-1AC51C22D4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18E32EE0-8A87-4620-8743-3624CC2363B1} = {21410E89-F193-4DA5-899F-92E448836500}
+		{58D90118-75B1-4638-A90E-1AC51C22D4A3} = {4DD4B134-FE8A-4CB2-873C-C1B585196227}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEFB3A20-B417-4C4F-A7CE-E095C86AF3A4}
+	EndGlobalSection
+EndGlobal

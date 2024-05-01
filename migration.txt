@@ -1,0 +1,2 @@
+create migration: dotnet ef migrations add InitialCreate --project DataBaseServices/DeliveryDB --startup-project BackendServices/CustomerService
+update database after migration: dotnet ef migrations add InitialCreate --project DataBaseServices/DeliveryDB --startup-project BackendServices/CustomerService
