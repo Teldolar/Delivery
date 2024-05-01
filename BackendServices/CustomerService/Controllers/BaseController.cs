@@ -1,4 +1,4 @@
-﻿using CustomerService.Models;
+﻿using DeliveryModels.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerService.Controllers

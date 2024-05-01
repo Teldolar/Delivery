@@ -1,46 +1,42 @@
-﻿using CustomerService.DbManagers.RestaurantManagers;
-using CustomerService.Models;
-using CustomerService.Models.RestaurantModels;
-using DeliveryDB.Models;
+﻿using DeliveryDB.Models;
+using DeliveryModels.DbManagers.RestaurantManagers;
+using DeliveryModels.Models;
+using DeliveryModels.Models.RestaurantModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace CustomerService.Controllers.RestaurantControllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RestaurantController : BaseController
+    public class RestaurantController(RestaurantDbManager restaurantDbManager) : BaseController
     {
-        private RestaurantDbManager _restaurantDbManager;
-        public RestaurantController(RestaurantDbManager restaurantDbManager) 
-        {
-            _restaurantDbManager = restaurantDbManager;
-        }
+        private readonly RestaurantDbManager _restaurantDbManager = restaurantDbManager;
 
-        [HttpGet]
-        public ActionResult<BaseResponseModel> GetRestaurantsByFilter()
+        [Route("GetRestaurantsByFilter")]
+        [HttpPost]
+        public ActionResult<BaseResponseModel> GetRestaurantsByFilter(RestaurantFilter restaurantFilter)
         {
             try
             {
-                RestaurantFilter restaurantFilter = new RestaurantFilter()
-                {
-                    TagIds = [],
-                };
-                restaurantFilter.TagIds.Add(2);
-                List<Restaurant> restaurants = _restaurantDbManager.GetRestaurantsByFilter(restaurantFilter);
-
-                List<RestaurantCard> cards = [];
-                foreach (var item in restaurants)
-                {
-                    cards.Add(new RestaurantCard()
-                    {
-                        Id = item.Id,
-                        Name = item.Name,
-                        Description = item.Description
-                    });
-                }
+                List<RestaurantCard> cards = _restaurantDbManager.GetRestaurantsByFilter(restaurantFilter)?.ConvetToRestaurantCards();
 
                 return GenerateJson(cards, 0, "");
+            }
+            catch (Exception ex)
+            {
+                return GenerateExceptionJson(-1, ex.Message);
+            }
+        }
+
+        [Route("GetRestaurantById")]
+        [HttpGet]
+        public ActionResult<BaseResponseModel> GetRestaurantById(int restaurantId)
+        {
+            try
+            {
+                RestaurantInfo restaurantInfo = _restaurantDbManager.GetRestaurantById(restaurantId)?.ConvertToRestaurantInfo();
+
+                return GenerateJson(restaurantInfo, 0, "");
             }
             catch (Exception ex)
             {

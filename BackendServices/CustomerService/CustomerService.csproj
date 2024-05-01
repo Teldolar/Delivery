@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DataBaseServices\DeliveryDBManager\DeliveryDBManager.csproj" />
     <ProjectReference Include="..\..\DataBaseServices\DeliveryDB\DeliveryDB.csproj" />
   </ItemGroup>
 

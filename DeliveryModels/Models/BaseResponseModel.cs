@@ -1,4 +1,4 @@
-﻿namespace CustomerService.Models
+﻿namespace DeliveryModels.Models
 {
     public class BaseResponseModel
     {

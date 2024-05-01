@@ -1,5 +1,6 @@
-using CustomerService.DbManagers.RestaurantManagers;
+
 using DeliveryDB;
+using DeliveryModels.DbManagers.RestaurantManagers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
