@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "CustomerService";
+
+package Restaurant;
+
+service Restaurant {
+  rpc GetRestaurantByFilter (GetRestaurantByFilterRequest) returns (GetRestaurantByFilterResponse);
+  rpc GetRestaurantById (GetRestaurantByIdRequest) returns (GetRestaurantByIdResponse);
+}
+
+message GetRestaurantByFilterRequest {
+  int32 TagId = 1;
+}
+
+message RestaurantCard {
+	int32 Id = 1;
+    string Name = 2;
+    string Description = 3;
+}
+
+message GetRestaurantByFilterResponse {
+	repeated RestaurantCard RestaurantCard = 1;
+}
+
+message GetRestaurantByIdRequest {
+  int32 Id = 1;
+}
+
+message GetRestaurantByIdResponse {
+    optional string Name = 1;
+    optional string Description = 2;
+    optional string LogoUrl = 3;
+    optional string Status = 4;
+}

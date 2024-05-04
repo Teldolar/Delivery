@@ -1,24 +1,26 @@
-﻿using DeliveryDB.Models;
-using DeliveryModels.DbManagers.RestaurantManagers;
+﻿using DeliveryModels.DbManagers.RestaurantManagers;
 using DeliveryModels.Models;
 using DeliveryModels.Models.RestaurantModels;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Mvc;
+using DeliveryServer.Managers;
+using DeliveryServer;
 
 namespace CustomerService.Controllers.RestaurantControllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RestaurantController(RestaurantDbManager restaurantDbManager) : BaseController
+    public class RestaurantController(CustomerManager customerManager) : BaseController
     {
-        private readonly RestaurantDbManager _restaurantDbManager = restaurantDbManager;
+        public readonly CustomerManager _customerManager = customerManager;
 
         [Route("GetRestaurantsByFilter")]
         [HttpPost]
-        public ActionResult<BaseResponseModel> GetRestaurantsByFilter(RestaurantFilter restaurantFilter)
+        public ActionResult<BaseResponseModel> GetRestaurantsByFilter(int tagId)
         {
             try
             {
-                List<RestaurantCard> cards = _restaurantDbManager.GetRestaurantsByFilter(restaurantFilter)?.ConvetToRestaurantCards();
+                var cards = _customerManager.GetRestaurantsByFilter(tagId);
 
                 return GenerateJson(cards, 0, "");
             }
@@ -34,7 +36,7 @@ namespace CustomerService.Controllers.RestaurantControllers
         {
             try
             {
-                RestaurantInfo restaurantInfo = _restaurantDbManager.GetRestaurantById(restaurantId)?.ConvertToRestaurantInfo();
+                RestaurantInfo restaurantInfo = _customerManager.GetRestaurantById(restaurantId);
 
                 return GenerateJson(restaurantInfo, 0, "");
             }

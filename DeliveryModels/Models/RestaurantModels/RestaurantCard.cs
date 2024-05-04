@@ -1,4 +1,5 @@
-﻿namespace DeliveryModels.Models.RestaurantModels
+﻿
+namespace DeliveryModels.Models.RestaurantModels
 {
     public class RestaurantCard
     {

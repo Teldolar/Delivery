@@ -1,18 +1,20 @@
-
+using Grpc.Net.Client;
 using DeliveryDB;
 using DeliveryModels.DbManagers.RestaurantManagers;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
+using DeliveryServer.Managers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<DeliveryContext>(options => options.UseNpgsql(connection));
-builder.Services.AddTransient<RestaurantDbManager>();
+builder.Services.AddTransient<CustomerManager>();
+builder.Services.AddSingleton(GrpcChannel.ForAddress(builder.Configuration.GetSection("GrpcServices")["CustomerService"]));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

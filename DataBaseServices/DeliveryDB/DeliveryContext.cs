@@ -13,8 +13,7 @@ namespace DeliveryDB
     {
         public DeliveryContext(DbContextOptions<DeliveryContext> options) : base(options)
         {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+
         }
 
         public virtual DbSet<Restaurant> Restaurants { get; set; }
